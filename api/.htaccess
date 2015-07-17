@@ -1,0 +1,17 @@
+#apache index:
+DirectoryIndex index.php
+
+#directive php:
+php_value display_startup_errors On
+php_value register_globals Off
+php_value magic_quotes_gpc Off
+#php_value include_path "."
+
+#rewrite:
+RewriteEngine On
+RewriteBase /
+
+#regula generala:
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ /api/index.php [L,QSA]
