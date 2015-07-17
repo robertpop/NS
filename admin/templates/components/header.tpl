@@ -1,0 +1,1 @@
+<div style="padding:10px 0 0 20px"><a href="/admin/"><img width="145" height="50" src="../images/logo_small.jpg" alt="Logo" border="0"></a><strong style="font-size:24px;margin-left:100px;vertical-align:top">Consola de Administrare</strong></div>
