@@ -1,0 +1,33 @@
+#apache index:
+DirectoryIndex index.html index.php
+
+php_value register_globals Off
+php_value magic_quotes_gpc Off
+#php_value output_handler ob_gzhandler
+
+#rewrite:
+RewriteEngine On
+
+#redirect pe www:
+RewriteCond %{HTTP_HOST} ^notifysnack.com [NC] 
+RewriteRule ^(.*)$ http://www.notifysnack.com/$1 [L,R=301]
+
+#maintenance mode
+#RewriteCond %{REQUEST_URI} !^/maintenance\.html$
+#RewriteRule ^(.*)$ /maintenance.html [R=307,L]
+
+#regula generala:
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ /index.php [L,QSA]
+
+#compression
+AddOutputFilterByType DEFLATE text/html text/plain text/xml
+
+<FilesMatch "\.gz\.js$">
+AddEncoding gzip .js
+</FilesMatch>
+
+<FilesMatch "\.gz\.css$">
+AddEncoding gzip .css
+</FilesMatch>
